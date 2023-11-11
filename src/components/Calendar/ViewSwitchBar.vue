@@ -18,9 +18,6 @@
 
 <script>
 export default {
-    mounted() {
-        console.log(this.activeView);
-    },
     props: {
         activeView: String
     }

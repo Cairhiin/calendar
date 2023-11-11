@@ -3,14 +3,17 @@
         <div class="w-20">
 
         </div>
-        <div v-for="day in week" class="text-center capitalize flex-1 bg-stone-200 p-2 border-r border-stone-100">{{
-            getDayOfTheWeek(day, 'nl-NL')
-        }} <span class="text-stone-700">{{ getDate(day) }}</span></div>
+        <div v-for="day in week" :class="{
+            'border-r': day % 7 !== 0
+        }" class="text-center capitalize flex-1 bg-stone-200 p-2 border-stone-100">{{
+    getDayOfTheWeek(day, 'nl-NL')
+}} <span class="text-stone-700">{{ getDate(day) }}</span></div>
 
         <template v-for="hour in day">
             <div class="py-2 pr-2 text-right leading-8">{{ hour < 10 ? `0${hour}:00` : `${hour}:00` }}</div>
                     <template v-for="day in week">
-                        <div class="border-b border-stone-200 border-r" :class="{
+                        <div class="border-b border-stone-200" :class="{
+                            'border-r': day % 7 !== 0,
                             'h-12 bg-stone-300': hour < 8 || hour >= 17,
                             'h-32 bg-stone-100': hour >= 8 && hour < 17
                         }"> </div>
@@ -36,7 +39,7 @@ export default {
         getShortDate: (date, locale) =>
             date.toLocaleDateString(locale, { day: 'numeric', month: 'numeric' }),
         getDate(day) {
-            const currentDate = this.calendarDate;
+            const currentDate = new Date(this.calendarDate);
             return this.getShortDate(new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay() + day - 1)));
         }
     }
