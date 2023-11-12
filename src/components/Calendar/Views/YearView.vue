@@ -1,24 +1,21 @@
 <template>
-    <div class="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 bg-stone-100">
-        <month-table v-for="month in year">
-            <div class="capitalize bg-stone-200 p-2 text-center border-r border-stone-100">{{
-                getMonthName(getMonthOfYear(month), 'nl-NL') }}</div>
-            <div class="grid grid-cols-7 py-2 px-4 text-center bg-stone-100">
-                <div v-for="day in daysInMonth[month - 1]" class="p-2 py-4"
-                    :class="{ 'border-b border-stone-200': day <= 28 && month !== 2 || day <= 21 && month === 2 }">
-                    {{ day }}
-                </div>
-            </div>
-        </month-table>
+    <div class="grid grid-cols-1 grid-rows-1 lg:grid-cols-3 xl:grid-cols-4">
+        <month-table v-for="month in year" :name="getMonthName(getMonthOfYear(month), 'nl-NL')"
+            :month="daysInMonth[month - 1]" class="mr-[1px]" />
     </div>
 </template>
 
 <script>
+import MonthTable from '../Components/MonthTable.vue';
+
 export default {
     data() {
         return {
             year: 12
         }
+    },
+    components: {
+        MonthTable
     },
     props: {
         calendarDate: Date

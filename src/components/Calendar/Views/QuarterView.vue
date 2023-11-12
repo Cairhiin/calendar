@@ -1,24 +1,20 @@
 <template>
     <div class="grid grid-cols-1 lg:grid-cols-3">
-        <month-table v-for="month in quarter">
-            <div class="capitalize bg-stone-200 p-2 text-center border-r border-stone-100">{{
-                getQuarterMonthName(month) }}</div>
-            <div class="grid grid-cols-7 py-2 px-4 text-center bg-stone-100">
-                <div v-for="day in daysInQuarterMonth(month)" class="p-2 py-4"
-                    :class="{ 'border-b border-stone-200': day <= 28 }">{{ day }}
-                </div>
-            </div>
-        </month-table>
+        <month-table v-for="month in quarter" :name="getQuarterMonthName(month)" :month="daysInQuarterMonth(month)"
+            class="mr-[1px]" />
     </div>
 </template>
 <script>
-import '../Components/MonthTable.vue';
+import MonthTable from '../Components/MonthTable.vue';
 
 export default {
     data() {
         return {
             quarter: 3,
         }
+    },
+    components: {
+        MonthTable
     },
     props: {
         calendarDate: Date
