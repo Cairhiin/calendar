@@ -17,7 +17,7 @@
     </div>
 </template>
 <script>
-import ViewSwitchBar from './ViewSwitchBar.vue';
+import ViewSwitchBar from './Components/ViewSwitchBar.vue';
 
 export default {
     components: {

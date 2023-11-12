@@ -41,7 +41,7 @@ export default {
         getMonthName: (date, locale) => date.toLocaleDateString(locale, { month: 'long' }),
         increaseCalendarDate(type) {
             let self = this;
-            console.log(self.calendarDate)
+
             let calendarTypes = {
                 "day": function () { self.setCalendarDate(new Date(self.calendarDate.setDate(self.calendarDate.getDate() + 1))); },
                 "week": function () { self.setCalendarDate(new Date(self.calendarDate.setDate(self.calendarDate.getDate() + 7))); },
