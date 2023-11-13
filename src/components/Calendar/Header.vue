@@ -30,6 +30,7 @@ export default {
             if (this.view === "week") return `Week ${this.week} - ${this.year} `;
             if (this.view === "month") return `${this.month} ${this.year}`;
             if (this.view === "quarter") return `Kwartaal ${Math.ceil((this.monthAsNumber + 1) / 3)} - ${this.year}`
+            return this.year;
         }
     },
     props: {

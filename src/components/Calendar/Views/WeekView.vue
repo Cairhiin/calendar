@@ -3,7 +3,7 @@
         <div class="w-20">
 
         </div>
-        <div v-for="day in week" :class="{
+        <div v-for="day in week" :key="day" :class="{
             'border-r': day % 7 !== 0
         }" class="text-center capitalize flex-1 bg-stone-200 p-2 border-stone-100">{{
     getDayOfTheWeek(day, 'nl-NL')

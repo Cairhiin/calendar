@@ -1,7 +1,7 @@
 <template>
     <div class="grid grid-cols-1 lg:grid-cols-3">
         <month-table v-for="month in quarter" :name="getQuarterMonthName(month)" :month="daysInQuarterMonth(month)"
-            class="mr-[1px]" />
+            class="mr-[1px]" :key="month" />
     </div>
 </template>
 <script>

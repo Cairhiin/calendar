@@ -1,7 +1,7 @@
 <template>
     <div class="grid grid-cols-1 grid-rows-1 lg:grid-cols-3 xl:grid-cols-4">
         <month-table v-for="month in year" :name="getMonthName(getMonthOfYear(month), 'nl-NL')"
-            :month="daysInMonth[month - 1]" class="mr-[1px]" />
+            :month="daysInMonth[month - 1]" class="mr-[1px]" :key="month" />
     </div>
 </template>
 

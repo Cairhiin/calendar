@@ -1,8 +1,9 @@
 <template>
     <div class="grid grid-cols-7">
-        <div v-for="day in week" class="text-center capitalize flex-1 bg-stone-200 p-2 border-r border-stone-100">{{
-            getDayOfTheWeek(day, 'nl-NL')
-        }}</div>
+        <div v-for="day in week" :key="day"
+            class="text-center capitalize flex-1 bg-stone-200 p-2 border-r border-stone-100">{{
+                getDayOfTheWeek(day, 'nl-NL')
+            }}</div>
         <div v-for="day in month" class="bg-stone-100 border-stone-200 h-32 font-bold text-right px-2 py-1" :class="{
             'border-r': day % 7 !== 0,
             'border-b': day <= 35,
