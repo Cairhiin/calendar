@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import MeetingItem from '../Components/MeetingItemDay.vue';
+import MeetingItem from '../Components/MeetingItem.vue';
 import { meetings } from '../Data/index.js';
 import { todos } from '../Data/index.js';
 

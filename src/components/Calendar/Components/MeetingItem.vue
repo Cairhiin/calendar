@@ -3,7 +3,7 @@
         'height': `${height}px`,
         'top': `${positionY}px`,
         'left': `calc(${index} * (100% - 50px) / ${amount} + 50px)`,
-        'width': `calc((100% - 54px) / ${amount} )`
+        'width': `calc((100% - 50px) / ${amount} )`
     }" :class="{
     'bg-sky-800/75': item.type === 'meeting',
     'bg-red-800/50': item.type === 'todo' && !isFinished,
@@ -15,8 +15,8 @@
     <div v-else class="bg-green-800/75 absolute rounded p-2 text-white shadow" :style="{
         'height': `${height}px`,
         'top': `${positionY}px`,
-        'left': `calc(${dayOfTheWeek} * (100% - 114px) / 7 + 82px)`,
-        'width': `calc((100% - 122px) / 7 )`
+        'left': `calc(${dayOfTheWeek} * (100% - 111px) / 7 + 80px)`,
+        'width': `calc((100% - 111px) / 7 )`
     }" :class="{
     'bg-sky-800/75 z-10': item.type === 'meeting',
     'bg-red-800/50': item.type === 'todo' && !isFinished,
