@@ -15,6 +15,7 @@ import MonthView from './Views/MonthView.vue';
 import QuarterView from './Views/QuarterView.vue';
 import YearView from './Views/YearView.vue';
 import { meetings } from './Data/index.js';
+import { todos } from './Data/index.js';
 
 export default {
     components: {
@@ -26,7 +27,7 @@ export default {
     },
     computed: {
         calendarItems() {
-            return meetings;
+            return [...meetings, ...todos].filter(item => new Date(item.starts_at).getDate() === this.calendarDate.getDate());
         }
     },
     props: {
