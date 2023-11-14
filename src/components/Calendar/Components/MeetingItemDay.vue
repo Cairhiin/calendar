@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-green-800/75 absolute rounded p-2 text-white shadow" :style="{
+    <div v-if="view === 'day'" class="bg-green-800/75 absolute rounded p-2 text-white shadow" :style="{
         'height': `${height}px`,
         'top': `${positionY}px`,
         'left': `calc(${index} * (100% - 50px) / ${amount} + 50px)`,
@@ -8,6 +8,20 @@
     'bg-sky-800/75': item.type === 'meeting',
     'bg-red-800/50': item.type === 'todo' && !isFinished,
 }">
+
+        <h4 class="truncate font-bold text-sm uppercase">{{ item.title }}</h4>
+        <p class="truncate text-slate-200/75">{{ item.description }}</p>
+    </div>
+    <div v-else class="bg-green-800/75 absolute rounded p-2 text-white shadow" :style="{
+        'height': `${height}px`,
+        'top': `${positionY}px`,
+        'left': `calc(${dayOfTheWeek} * (100% - 114px) / 7 + 82px)`,
+        'width': `calc((100% - 122px) / 7 )`
+    }" :class="{
+    'bg-sky-800/75 z-10': item.type === 'meeting',
+    'bg-red-800/50': item.type === 'todo' && !isFinished,
+}">
+
         <h4 class="truncate font-bold text-sm uppercase">{{ item.title }}</h4>
         <p class="truncate text-slate-200/75">{{ item.description }}</p>
     </div>
@@ -21,12 +35,11 @@ const WORK_DAY_START = 8;
 const WORK_DAY_END = 17;
 
 export default {
-    data() {
-        return {
-
-        }
-    },
     computed: {
+        dayOfTheWeek() {
+            console.log(this.item)
+            return new Date(this.item.starts_at).getDay();
+        },
         isFinished() {
             return new Date(this.item.ends_at) > new Date() && !this.item.data_completed;
         },
@@ -97,7 +110,10 @@ export default {
         },
     },
     props: {
-        type: String,
+        view: {
+            type: String,
+            default: 'day'
+        },
         item: Object,
         amount: Number,
         index: Number

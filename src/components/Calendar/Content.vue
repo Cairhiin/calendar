@@ -1,6 +1,6 @@
 <template>
     <div>
-        <day-view v-if="view === 'day'" :calendarItems="calendarItems" />
+        <day-view v-if="view === 'day'" :calendarDate="calendarDate" />
         <week-view v-if="view === 'week'" :calendarDate="calendarDate" />
         <month-view v-if="view === 'month'" :calendarDate="calendarDate" />
         <quarter-view v-if="view === 'quarter'" :calendarDate="calendarDate" />
@@ -14,8 +14,6 @@ import WeekView from './Views/WeekView.vue';
 import MonthView from './Views/MonthView.vue';
 import QuarterView from './Views/QuarterView.vue';
 import YearView from './Views/YearView.vue';
-import { meetings } from './Data/index.js';
-import { todos } from './Data/index.js';
 
 export default {
     components: {
@@ -24,11 +22,6 @@ export default {
         MonthView,
         QuarterView,
         YearView
-    },
-    computed: {
-        calendarItems() {
-            return [...meetings, ...todos].filter(item => new Date(item.starts_at).getDate() === this.calendarDate.getDate());
-        }
     },
     props: {
         calendarDate: Date,
