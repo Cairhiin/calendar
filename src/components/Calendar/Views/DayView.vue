@@ -9,8 +9,8 @@
                     }" class="border-b border-stone-200 bg-stone-100 flex-1">
                     </div>
             </div>
-            <template v-for="item in calendarItems" :key="calendarItems.id">
-                <MeetingItem type="meeting" :item="item" />
+            <template v-for="(item, index) in calendarItems" :key="calendarItems.id">
+                <MeetingItem :item="item" :index="index" :amount="calendarItems.length" />
             </template>
         </div>
 </template>

@@ -5,8 +5,8 @@ export const meetings = [
     owner: "Frank van de Voorde",
     title: "Garage",
     description: "New winter tires",
-    starts_at: new Date("November 14, 2023 5:30:00"),
-    ends_at: new Date("November 14, 2023 7:35:00"),
+    starts_at: new Date("November 14, 2023 12:30:00"),
+    ends_at: new Date("November 14, 2023 19:30:00"),
   },
   {
     id: 2,
@@ -14,8 +14,8 @@ export const meetings = [
     owner: "Frank van de Voorde",
     title: "Doctor appointment",
     description: "Checkup",
-    starts_at: new Date("November 17, 2023 14:00:00"),
-    ends_at: new Date("November 17, 2023 14:45:00"),
+    starts_at: new Date("November 14, 2023 15:00:00"),
+    ends_at: new Date("November 14, 2023 15:45:00"),
   },
 ];
 
