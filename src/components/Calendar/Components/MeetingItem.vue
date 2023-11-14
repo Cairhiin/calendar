@@ -2,8 +2,8 @@
     <div class="bg-green-800/75 absolute rounded p-2 text-white shadow" :style="{
         'height': `${height}px`,
         'top': `${positionY}px`,
-        'left': `calc(${index * 100 / amount}% + 50px)`,
-        'width': `calc(${100 / amount}% - 50px)`
+        'left': `calc(${index} * (100% - 50px) / ${amount} + 50px)`,
+        'width': `calc((100% - 54px) / ${amount} )`
     }" :class="{
     'bg-sky-800/75': item.type === 'meeting',
     'bg-red-800/50': item.type === 'todo' && !isFinished,
