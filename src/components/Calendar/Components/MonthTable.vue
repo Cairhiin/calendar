@@ -25,10 +25,20 @@ export default {
     },
     methods: {
         getIsCalendarItemToday(item, day) {
-            return item.starts_at.getDate() === day;
+            if (item.type === 'meeting') {
+                return item.starts_at.getDate() === day;
+            }
+
+            return item.ends_at.getDate() === day;
         },
         getIsCalendarEventToday(day) {
-            return this.calendarItems.filter(item => item.starts_at.getDate() === day).length > 0;
+            return this.calendarItems.filter(item => {
+                if (item.type === 'meeting') {
+                    return item.starts_at.getDate() === day;
+                }
+
+                return item.ends_at.getDate() === day;
+            }).length > 0;
         }
     },
     props: {

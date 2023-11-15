@@ -18,7 +18,7 @@
         </div>
     </div>
 </template>
-<!-- IMPLEMENT TODO ENDS_DATE INSTEAD OF STARTS_AT -->
+
 <script>
 import MeetingItem from '../Components/MeetingItemMonth.vue';
 import { meetings } from '../Data/index.js';
@@ -38,8 +38,13 @@ export default {
         calendarItems() {
             return [...meetings, ...todos].filter(item => {
                 const currentDate = new Date(this.calendarDate);
-                return item.starts_at >= new Date(new Date(currentDate.getFullYear(), currentDate.getMonth(), 1))
-                    && item.starts_at <= new Date(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0))
+                if (item.type === 'meeting') {
+                    return item.starts_at >= new Date(new Date(currentDate.getFullYear(), currentDate.getMonth(), 1))
+                        && item.starts_at <= new Date(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0))
+                }
+
+                return item.ends_at >= new Date(new Date(currentDate.getFullYear(), currentDate.getMonth(), 1))
+                    && item.ends_at <= new Date(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0))
             });
         }
     },
@@ -49,7 +54,13 @@ export default {
     methods: {
         getCalendarItems(day) {
             const today = new Date(this.calendarDate.getFullYear(), this.calendarDate.getMonth(), this.getDate(day));
-            return this.calendarItems.filter(item => item.starts_at.getDate() === today.getDate());
+            return this.calendarItems.filter(item => {
+                if (item.type === 'meeting') {
+                    return item.starts_at.getDate() === today.getDate();
+                }
+
+                return item.ends_at.getDate() === today.getDate();
+            });
         },
         getDayOfTheWeek(day, locale) {
             return (new Date(0, 0, day - 1)).toLocaleDateString(locale, { weekday: 'short' })
