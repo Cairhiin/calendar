@@ -53,7 +53,7 @@ export const todos = [
     owner: "Frank van de Voorde",
     title: "Finish Website",
     description: "Finalize the documentation and fix some bugs",
-    starts_at: new Date("November 15, 2023 14:00:00"),
-    ends_at: new Date("November 17, 2023 14:45:00"),
+    starts_at: new Date("November 14, 2023 14:00:00"),
+    ends_at: new Date("November 15, 2023 10:00:00"),
   },
 ];

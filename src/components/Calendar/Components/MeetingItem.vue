@@ -6,24 +6,24 @@
         'width': `calc((100% - 50px) / ${amount} )`
     }" :class="{
     'bg-sky-800/75': item.type === 'meeting',
-    'bg-red-800/50': item.type === 'todo' && !isFinished,
+    'bg-red-800/75': item.type === 'todo' && !isFinished,
 }">
 
-        <h4 class="truncate font-bold text-sm uppercase">{{ item.title }}</h4>
-        <p class="truncate text-slate-200/75">{{ item.description }}</p>
+        <h4 class="truncate xl:whitespace-normal font-bold text-xs xl:text-sm uppercase">{{ item.title }}</h4>
+        <p class="truncate xl:whitespace-normal text-slate-200/75 text-xs xl:text-sm">{{ item.description }}</p>
     </div>
-    <div v-else class="bg-green-800/75 absolute p-2 text-white rounded" :style="{
+    <div v-else class="bg-green-800/75 absolute p-2 text-white" :style="{
         'height': `${height}px`,
         'top': `${positionY}px`,
         'left': `calc(${dayOfTheWeek} * 100%  / 7)`,
         'width': `calc(100%  / 7 )`
     }" :class="{
     'bg-sky-800/75 z-10': item.type === 'meeting',
-    'bg-red-800/50': item.type === 'todo' && !isFinished,
+    'bg-red-800/75': item.type === 'todo' && !isFinished,
 }">
 
-        <h4 class="truncate font-bold text-sm uppercase">{{ item.title }}</h4>
-        <p class="truncate text-slate-200/75">{{ item.description }}</p>
+        <h4 class="truncate xl:whitespace-normal font-bold text-xs xl:text-sm uppercase">{{ item.title }}</h4>
+        <p class="truncate xl:whitespace-normal text-slate-200/75 text-xs xl:text-sm">{{ item.description }}</p>
     </div>
 </template>
 
