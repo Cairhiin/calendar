@@ -1,18 +1,26 @@
 <template>
-    <div v-if="view === 'day'" class="bg-green-800/75 absolute p-2 text-white  drop-shadow" :style="{
+    <div v-if="view === 'day'" class="bg-green-800/75 absolute p-2 text-white drop-shadow overflow-hidden" :style="{
         'height': `${height}px`,
         'top': `${positionY}px`,
-        'left': `calc(${index} * (100% - 50px) / ${amount} + 50px)`,
-        'width': `calc((100% - 50px) / ${amount} )`
+        'left': `50px`,
+        'width': `calc(100% - 50px)`
     }" :class="{
     'bg-sky-800/75': item.type === 'meeting',
     'bg-red-800/75': item.type === 'todo' && !isFinished,
 }">
 
-        <h4 class="truncate xl:whitespace-normal font-bold text-xs xl:text-sm uppercase">{{ item.title }}</h4>
-        <p class="truncate xl:whitespace-normal text-slate-200/75 text-xs xl:text-sm">{{ item.description }}</p>
+        <h4 class="font-bold text-xs lg:text-sm uppercase">{{ item.title }}</h4>
+        <p class=" text-slate-200/75 text-xs lg:text-sm">{{ item.description }}</p>
+        <div class="flex gap-4 mt-2">
+            <p class="text-slate-200/75 text-xs lg:text-sm"><span class="text-white">Starttijd:</span> {{
+                item.starts_at.toLocaleString('nl-NL') }}
+            </p>
+            <p class=" text-slate-200/75 text-xs lg:text-sm"><span class="text-white">Eindtijd:</span> {{
+                item.ends_at.toLocaleString('nl-NL') }}
+            </p>
+        </div>
     </div>
-    <div v-else class="bg-green-800/75 absolute p-2 text-white drop-shadow" :style="{
+    <div v-else class="bg-green-800/75 absolute p-2 text-white drop-shadow overflow-hidden" :style="{
         'height': `${height}px`,
         'top': `${positionY}px`,
         'left': `calc(${dayOfTheWeek} * 100%  / 7)`,
