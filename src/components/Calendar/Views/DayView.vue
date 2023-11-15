@@ -28,7 +28,9 @@ export default {
     },
     computed: {
         calendarItems() {
-            return [...meetings, ...todos].filter(item => new Date(item.starts_at).getDate() === this.calendarDate.getDate());
+            return [
+                ...meetings.filter(item => new Date(item.starts_at).getDate() === this.calendarDate.getDate()),
+                ...todos.filter(item => new Date(item.ends_at).getDate() === this.calendarDate.getDate())];
         }
     },
     components: {

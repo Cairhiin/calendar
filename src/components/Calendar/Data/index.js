@@ -54,7 +54,7 @@ export const todos = [
     title: "Finish Website",
     description: "Finalize the documentation and fix some bugs",
     starts_at: new Date("November 14, 2023 14:00:00"),
-    ends_at: new Date("November 15, 2023 10:00:00"),
+    ends_at: new Date("November 16, 2023 10:00:00"),
   },
   {
     id: 2,
@@ -63,6 +63,6 @@ export const todos = [
     title: "Finish Website",
     description: "Finalize the documentation and fix some bugs",
     starts_at: new Date("November 14, 2023 14:00:00"),
-    ends_at: new Date("November 15, 2023 10:00:00"),
+    ends_at: new Date("November 17, 2023 9:45:00"),
   },
 ];

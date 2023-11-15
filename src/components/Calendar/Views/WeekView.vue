@@ -57,8 +57,14 @@ export default {
         calendarItems() {
             return [...meetings, ...todos].filter(item => {
                 const currentDate = new Date(this.calendarDate);
-                return item.starts_at >= new Date(new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 0)))
-                    && item.starts_at <= new Date(new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 6)))
+
+                if (item.type === 'meeting') {
+                    return item.starts_at >= new Date(new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 0)))
+                        && item.starts_at <= new Date(new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 6)))
+                }
+
+                return item.ends_at >= new Date(new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 0)))
+                    && item.ends_at <= new Date(new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 6)))
             });
         }
     },

@@ -37,8 +37,11 @@ const WORK_DAY_END = 17;
 export default {
     computed: {
         dayOfTheWeek() {
-            console.log(this.item)
-            return new Date(this.item.starts_at).getDay();
+            if (this.item.type === 'meeting') {
+                return new Date(this.item.starts_at).getDay();
+            }
+
+            return new Date(this.item.ends_at).getDay();
         },
         isFinished() {
             return new Date(this.item.ends_at) > new Date() && !this.item.data_completed;
@@ -48,6 +51,10 @@ export default {
             const endsBeforeWorkingHours = this.item.ends_at.getHours() < WORK_DAY_START;
             const beginsAfterWorkingHours = this.item.starts_at.getHours() >= WORK_DAY_END;
             const endsAfterWorkingHours = this.item.ends_at.getHours() >= WORK_DAY_END;
+
+            if (this.item.type === 'todo') {
+                return (WORK_HOUR_CELL_HEIGHT + BORDER);
+            }
 
             if (this.item.ends_at.getDate() !== this.item.starts_at.getDate()) {
                 return (WORK_DAY_END - this.item.starts_at.getHours()) * (WORK_HOUR_CELL_HEIGHT + BORDER) + 7 * (NONWORK_HOUR_CELL_HEIGHT + BORDER);
@@ -87,13 +94,23 @@ export default {
 
             return Math.round((this.item.ends_at.getTime() - this.item.starts_at.getTime()) / 60000) / 60 * (WORK_HOUR_CELL_HEIGHT + BORDER);
         },
-        width() {
-            return
-        },
-        positionX() {
-            return
-        },
         positionY() {
+            if (this.item.type === 'todo') {
+                if (this.item.ends_at.getHours() >= WORK_DAY_START && this.item.ends_at.getHours() < WORK_DAY_END) {
+                    return 8 * 48 + (this.item.ends_at.getHours() - 9 + this.item.ends_at.getMinutes() / 60) * 128;
+                }
+
+                if (this.item.ends_at.getHours() >= WORK_DAY_END) {
+                    return (
+                        WORK_DAY_START * (NONWORK_HOUR_CELL_HEIGHT + BORDER)
+                        + (WORK_DAY_END - WORK_DAY_START) * (WORK_HOUR_CELL_HEIGHT + BORDER)
+                        + (this.item.ends_at.getHours() - 1 - WORK_DAY_END + this.item.ends_at.getMinutes() / 60) * (NONWORK_HOUR_CELL_HEIGHT + BORDER)
+                    );
+                }
+
+                return (this.item.ends_at.getHours() - 1 + this.item.ends_at.getMinutes() / 60) * 48;
+            }
+
             if (this.item.starts_at.getHours() >= WORK_DAY_START && this.item.starts_at.getHours() < WORK_DAY_END) {
                 return 8 * 48 + (this.item.starts_at.getHours() - 8 + this.item.starts_at.getMinutes() / 60) * 128;
             }
@@ -106,7 +123,7 @@ export default {
                 );
             }
 
-            else return (this.item.starts_at.getHours() + this.item.starts_at.getMinutes() / 60) * 48;
+            return (this.item.starts_at.getHours() + this.item.starts_at.getMinutes() / 60) * 48;
         },
     },
     props: {
