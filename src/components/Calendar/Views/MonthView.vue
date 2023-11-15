@@ -10,7 +10,7 @@
             'text-stone-400 bg-stone-300': getMonth(day) !== calendarDate.getMonth(),
             'text-stone-900': getMonth(day) === calendarDate.getMonth()
         }"><span class="absolute bottom-1 right-2 text-xl">{{ getDate(day) }}</span>
-            <div class="grid grid-rows-5 h-full grid-cols-1 gap-[1px]">
+            <div class="grid grid-rows-5 h-full grid-cols-1">
                 <template v-for="(item, index) in getCalendarItems(day)" :key="item.id + item.type">
                     <MeetingItem v-if="getMonth(day) === calendarDate.getMonth()" :item="item" />
                 </template>

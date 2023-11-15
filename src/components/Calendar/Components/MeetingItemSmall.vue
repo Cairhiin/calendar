@@ -3,7 +3,6 @@
         'bg-green-800/75': item.type === 'todo',
         'bg-red-800/75': item.type === 'todo' && !isFinished
     }">
-        <h4 class="truncate font-bold text-xs text-left">{{ item.title }}</h4>
     </div>
 </template>
 <script>

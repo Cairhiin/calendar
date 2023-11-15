@@ -1,11 +1,13 @@
 <template>
     <div class="grid grid-cols-1 lg:grid-cols-3">
         <month-table v-for="month in quarter" :name="getQuarterMonthName(month)" :month="daysInQuarterMonth(month)"
-            class="mr-[1px]" :key="month" />
+            class="mr-[1px]" :key="month" :calendarItems="getCalendarItems(month)" :calendarDate="calendarDate" />
     </div>
 </template>
 <script>
 import MonthTable from '../Components/MonthTable.vue';
+import { meetings } from '../Data/index.js';
+import { todos } from '../Data/index.js';
 
 export default {
     data() {
@@ -31,6 +33,12 @@ export default {
         },
     },
     methods: {
+        getCalendarItems(month) {
+            const quarterMonthDate = new Date(this.getMonthOfQuarter(month));
+            return [...meetings, ...todos].filter(item => item.starts_at >= new Date(new Date(quarterMonthDate.getFullYear(), quarterMonthDate.getMonth(), 1))
+                && item.starts_at <= new Date(new Date(quarterMonthDate.getFullYear(), quarterMonthDate.getMonth() + 1, 0))
+            );
+        },
         daysInQuarterMonth(month) {
             if (month === 1) return this.daysInFirstMonthOfQuarter;
             if (month === 2) return this.daysInSecondMonthOfQuarter;
