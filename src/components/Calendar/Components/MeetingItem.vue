@@ -1,5 +1,5 @@
 <template>
-    <div v-if="view === 'day'" class="bg-green-800/75 absolute p-2 text-white" :style="{
+    <div v-if="view === 'day'" class="bg-green-800/75 absolute p-2 text-white  drop-shadow" :style="{
         'height': `${height}px`,
         'top': `${positionY}px`,
         'left': `calc(${index} * (100% - 50px) / ${amount} + 50px)`,
@@ -12,7 +12,7 @@
         <h4 class="truncate xl:whitespace-normal font-bold text-xs xl:text-sm uppercase">{{ item.title }}</h4>
         <p class="truncate xl:whitespace-normal text-slate-200/75 text-xs xl:text-sm">{{ item.description }}</p>
     </div>
-    <div v-else class="bg-green-800/75 absolute p-2 text-white" :style="{
+    <div v-else class="bg-green-800/75 absolute p-2 text-white drop-shadow" :style="{
         'height': `${height}px`,
         'top': `${positionY}px`,
         'left': `calc(${dayOfTheWeek} * 100%  / 7)`,
