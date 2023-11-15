@@ -17,8 +17,6 @@
 
 <script>
 import MeetingItem from '../Components/MeetingItem.vue';
-import { meetings } from '../Data/index.js';
-import { todos } from '../Data/index.js';
 
 export default {
     data() {
@@ -26,18 +24,12 @@ export default {
             day: 24
         }
     },
-    computed: {
-        calendarItems() {
-            return [
-                ...meetings.filter(item => new Date(item.starts_at).getDate() === this.calendarDate.getDate()),
-                ...todos.filter(item => new Date(item.ends_at).getDate() === this.calendarDate.getDate())];
-        }
-    },
     components: {
         MeetingItem
     },
     props: {
-        calendarDate: Date
+        calendarDate: Date,
+        calendarItems: Object
     }
 }
 </script>

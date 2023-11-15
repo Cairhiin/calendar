@@ -1,5 +1,5 @@
 <template>
-    <div class="py-1 px-2 text-white/75 drop-shadow" :class="{
+    <div class="py-1 px-2 text-white drop-shadow" :class="{
         'bg-sky-800/75': item.type === 'meeting',
         'bg-green-800/75': item.type === 'todo',
         'bg-red-800/75': item.type === 'todo' && !isFinished

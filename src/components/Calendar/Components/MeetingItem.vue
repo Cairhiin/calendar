@@ -9,13 +9,13 @@
     'bg-red-800/75': item.type === 'todo' && !isFinished,
 }">
 
-        <h4 class="font-bold text-xs lg:text-sm uppercase">{{ item.title }}</h4>
-        <p class=" text-slate-200/75 text-xs lg:text-sm">{{ item.description }}</p>
+        <h4 class="font-bold text-sm uppercase">{{ item.title }}</h4>
+        <p class=" text-slate-200/75 text-sm lg:text-base">{{ item.description }}</p>
         <div class="flex gap-4 mt-2">
-            <p class="text-slate-200/75 text-xs lg:text-sm"><span class="text-white">Starttijd:</span> {{
+            <p class="text-slate-200/75 text-sm lg:text-base"><span class="text-white">Starttijd:</span> {{
                 item.starts_at.toLocaleString('nl-NL') }}
             </p>
-            <p class=" text-slate-200/75 text-xs lg:text-sm"><span class="text-white">Eindtijd:</span> {{
+            <p class=" text-slate-200/75 text-sm" lg:text-base><span class="text-white">Eindtijd:</span> {{
                 item.ends_at.toLocaleString('nl-NL') }}
             </p>
         </div>

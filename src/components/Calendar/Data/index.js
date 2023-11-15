@@ -32,8 +32,8 @@ export const meetings = [
     owner: "Frank van de Voorde",
     title: "Doctor appointment",
     description: "Checkup",
-    starts_at: new Date("November 16, 2023 12:00:00"),
-    ends_at: new Date("November 16, 2023 12:45:00"),
+    starts_at: new Date("November 15, 2023 12:00:00"),
+    ends_at: new Date("November 15, 2023 12:45:00"),
   },
   {
     id: 5,
@@ -54,7 +54,7 @@ export const todos = [
     title: "Finish Website",
     description: "Finalize the documentation and fix some bugs",
     starts_at: new Date("November 14, 2023 14:00:00"),
-    ends_at: new Date("November 16, 2023 10:00:00"),
+    ends_at: new Date("November 15, 2023 10:00:00"),
   },
   {
     id: 2,
