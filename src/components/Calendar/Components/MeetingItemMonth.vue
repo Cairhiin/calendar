@@ -7,6 +7,7 @@
         <h4 class="truncate font-bold text-xs text-left">{{ item.title }}</h4>
     </div>
 </template>
+<!-- IMPLEMENT TODO ENDS_DATE INSTEAD OF STARTS_AT -->
 <script>
 export default {
     props: {

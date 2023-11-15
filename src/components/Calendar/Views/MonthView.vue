@@ -18,7 +18,7 @@
         </div>
     </div>
 </template>
-
+<!-- IMPLEMENT TODO ENDS_DATE INSTEAD OF STARTS_AT -->
 <script>
 import MeetingItem from '../Components/MeetingItemMonth.vue';
 import { meetings } from '../Data/index.js';

@@ -4,6 +4,7 @@
             class="mr-[1px]" :key="month" :calendarItems="getCalendarItems(month)" :calendarDate="calendarDate" />
     </div>
 </template>
+<!-- IMPLEMENT TODO ENDS_DATE INSTEAD OF STARTS_AT -->
 <script>
 import MonthTable from '../Components/MonthTable.vue';
 import { meetings } from '../Data/index.js';

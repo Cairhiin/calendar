@@ -9,10 +9,22 @@
                 item.type === 'todo' && !(new Date(item.ends_at) > new Date() && !item.data_completed)
         }">
             <div class="font-bold uppercase">{{ item.title }}</div>
-            <div>{{ item.description }}</div>
-            <div class="mt-2">
-                <div>Stardtijd: {{ item.starts_at.toLocaleString('nl-NL') }}</div>
-                <div>Eindtijd: {{ item.ends_at.toLocaleString('nl-NL') }}</div>
+            <div class="text-stone-900/75">{{ item.description }}</div>
+            <div class="mt-2 text-stone-900/75">
+                <div class="capitalize">Starttijd: {{ item.starts_at.toLocaleDateString('nl-NL', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }) }} ({{
+    item.starts_at.toLocaleTimeString('nl-NL') }})</div>
+                <div class="capitalize">Eindtijd: {{ item.ends_at.toLocaleDateString('nl-NL', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }) }} ({{
+    item.ends_at.toLocaleTimeString('nl-NL') }})</div>
             </div>
         </div>
         <div class="flex gap-4 uppercase text-white font-bold mt-8 text-xs md:text-sm">

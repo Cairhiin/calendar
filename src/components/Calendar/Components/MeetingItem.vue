@@ -15,7 +15,7 @@
             <p class="text-slate-200/75 text-sm lg:text-base"><span class="text-white">Starttijd:</span> {{
                 item.starts_at.toLocaleString('nl-NL') }}
             </p>
-            <p class=" text-slate-200/75 text-sm" lg:text-base><span class="text-white">Eindtijd:</span> {{
+            <p class=" text-slate-200/75 text-sm lg:text-base"><span class="text-white">Eindtijd:</span> {{
                 item.ends_at.toLocaleString('nl-NL') }}
             </p>
         </div>
